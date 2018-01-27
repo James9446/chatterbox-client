@@ -15,11 +15,20 @@ body {
     border-width: 0 1px 1px 1px;
 }
 
+@font-face {
+    font-family: Wilhelm;
+    src: url("../../assets/Wilhelm.otf") format("opentype");
+}
+
 #main h1 {
     margin-top: 0;
     font-size: 35px;
     margin-bottom: 5px;
     padding: 5px;
+}
+
+h1#title{
+    font-family: Wilhelm;
 }
 
 #main h1 span {
