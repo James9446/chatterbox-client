@@ -11,7 +11,7 @@ app.server = 'http://parse.sfm8.hackreactor.com/chatterbox/classes/messages';
 app.init = function () {
 
   // var loadMessages = function loadMessages () {
-
+  app.clearMessages();
   var data = app.fetch('', () => {
     var messages = data.responseJSON.results;
 
@@ -26,7 +26,8 @@ app.init = function () {
   //   type: 'GET',
   //   success: () => { loadMessages(); }
   // });
-
+  app.handleUsernameClick('#chats', '.username');
+  app.handleSubmit();
 
 /*,
     success: loadMessages*/
@@ -50,7 +51,7 @@ app.send = function send (message) {
   });
 };
 
-app.fetch = function fetch (data, success = console.log) {
+app.fetch = function fetch (data, success = console.log('successful fetch')) {
   data = data ? '/' + data : '';
   return $.ajax({
     type: 'GET',
@@ -75,7 +76,7 @@ app.renderMessage = function renderMessage(message) {
   }
   var $roomname = $(`<h3 class="roomname"> ${_.escape(message.roomname)} </h3>`);
   $message.append($username, $text, $roomname);
-  $('#chats').append($message);
+  $('#chats').prepend($message);
 };
 
 app.renderRoom = function renderRoom(roomname) {
@@ -83,8 +84,27 @@ app.renderRoom = function renderRoom(roomname) {
   $('#roomSelect').append($room);
 };
 
-app.handleUsernameClick = function handleUsernameClick () {
+app.handleUsernameClick = function handleUsernameClick (parent, type) {
+  $(parent).on('click', type, function (event) {
+    // console.log('event:', event, 'this:', this);
+    // console.log('this.id:', this.id);
+    console.log(_.escape(this.id) + ' clicked');
+  });
+};
 
+app.handleSubmit = function handleSubmit() {
+  $('#send').submit(function (event) {
+    event.preventDefault();
+    console.log('event: ', event);
+    let text = $('#message').val();
+    let message = {
+      username: 'lil bobby t',
+      text: text,
+      roomname: 'SFM8'
+    };
+    console.log('handling submit with message: ', message);
+    app.renderMessage(message);
+  });
 };
 
 
