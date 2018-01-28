@@ -16,7 +16,7 @@
   <body>
     
     <!--<div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>-->
-    <div class="container">
+    <div class="container my-5">
       <div class="head row justify-content-center">
         <h1 id="title">chatterbox</h1>
       </div>
@@ -27,25 +27,25 @@
             </select>
           </div>
 
-          <div class="container px-0 py-0" style="background-color: lightgray;">
-            <div class="container" id="chats-dummy" style="height: 500px;">
+          <div class="container px-0" style="background-color: white;">
+            <div class="container row px-0 mx-0 pb-3" id="chats">
             </div>
-            <div class="container px-0" id="chat-container">
-                <form id="send" method="post">
-                  <div class="input-group">
-                    <input type="submit" name="submit" class="submit" style="display: none"/>
+          </div>
+          <div class="container-fluid mx-0 px-0 row" id="chat-input-container" style="position: relative; top:-2em;">
+                <form id="send" class="container fluid px-0 mx-0" style="height:5em" method="post">
+                    <div class="row border-0" style="height:2.5em"></div>
 
-                    <input type="text" class="form-control" name="message" id="message">
-                     <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2">&#9617;</span>
+                    <div class="input-group fluid border-0" style="height:2.5em;">
+                      <input type="submit" name="submit" class="submit" style="display: none"/>
+
+                      <input type="text" class="fluid mx-0 form-control border-0" placeholder="Enter message..." name="message" id="message">
+                       <div class="input-group-append fluid border-0">
+                        <span class="input-group-text" id="basic-addon2">&#9617;</span>
+                      </div>
                     </div>
-                  </div>
                 </form>
               </div>
-          </div>
-          
-          
-
+        
 
 
 

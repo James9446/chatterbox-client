@@ -43,6 +43,7 @@ app.send = function send (message) {
     success: function (data) {
       console.log('data: ', data);
       console.log('chatterbox: Message sent');
+      app.init();
     },
     error: function (data) {
       // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -66,17 +67,19 @@ app.clearMessages = function clearMessages() {
   $('#chats').children().remove();
 };
 
-app.renderMessage = function renderMessage(message) {
-  var $message = $('<div class="message"></div>');
-  var $username = $(`<h2 class="username" id="${_.escape(message.username)}"> ${_.escape(message.username)} </h2>`);
-  var $text = $(`<p class="text"> ${_.escape(message.text)} </p>`);
 
-  if (!message.roomname) {
-    message.roomname = '';
-  }
-  var $roomname = $(`<h3 class="roomname"> ${_.escape(message.roomname)} </h3>`);
-  $message.append($username, $text, $roomname);
-  $('#chats').prepend($message);
+
+app.renderMessage = function renderMessage(message) {
+  var $message = $(`<div class="container-fluid message-container"><div class="container-fluid"><h2 class="username" id="${_.escape(message.username)}">${_.escape(message.username)}</h2><span>${_.escape(message.createdAt)}</span></div><p>${_.escape(message.text)}</p></div>`);
+  // var $username = $(`<h2 class="username" id="${_.escape(message.username)}"> ${_.escape(message.username)} </h2>`);
+  // var $text = $(`<p class="text"> ${_.escape(message.text)} </p>`);
+
+  // if (!message.roomname) {
+  //   message.roomname = '';
+  // }
+  // var $roomname = $(`<h3 class="roomname"> ${_.escape(message.roomname)} </h3>`);
+  // $message.append($username, $text, $roomname);
+  $('#chats').append($message);
 };
 
 app.renderRoom = function renderRoom(roomname) {
@@ -103,7 +106,7 @@ app.handleSubmit = function handleSubmit() {
       roomname: 'SFM8'
     };
     console.log('handling submit with message: ', message);
-    app.renderMessage(message);
+    app.send(message);
   });
 };
 
