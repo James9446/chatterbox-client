@@ -9,7 +9,8 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
   </head>
@@ -20,6 +21,11 @@
       <div class="head row justify-content-center">
         <h1 id="title">chatterbox</h1>
       </div>
+        
+        <div class="container-fluid mx-0 px-0 row" id="chat-header" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="background-color: lightgray;">
+          <h3>&nbsp;</h3>
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button> -->
+        </div>
         
         <div class="row justify-content-center">
           <div id="rooms">
@@ -32,27 +38,58 @@
             </div>
           </div>
           <div class="container-fluid mx-0 px-0 row" id="chat-input-container" style="position: relative; top:-2em;">
-                <form id="send" class="container fluid px-0 mx-0" style="height:5em" method="post">
-                    <div class="row border-0" style="height:2.5em"></div>
+            <form id="send" class="container fluid px-0 mx-0" style="height:5em" method="post">
+                <div class="row border-0" style="height:2.5em"></div>
 
-                    <div class="input-group fluid border-0" style="height:2.5em;">
-                      <input type="submit" name="submit" class="submit" style="display: none"/>
+                <div class="input-group fluid border-0" style="height:2.5em;">
+                  <input type="submit" name="submit" class="submit" style="display: none"/>
 
-                      <input type="text" class="fluid mx-0 form-control border-0" placeholder="Enter message..." name="message" id="message">
-                       <div class="input-group-append fluid border-0">
-                        <span class="input-group-text" id="basic-addon2">&#9617;</span>
-                      </div>
-                    </div>
-                </form>
-              </div>
+                  <input type="text" class="fluid mx-0 form-control border-0" placeholder="Enter message..." name="message" id="message">
+                   <div class="input-group-append fluid border-0">
+                    <span class="input-group-text" id="basic-addon2">&#9617;</span>
+                  </div>
+                </div>
+            </form>
+          </div>
         
 
 
 
 
-        <div id="chats" style="display: none"></div>
+        <!-- <div id="chats" style="display: none"></div> -->
       </div>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h5 class="modal-title" id="exampleModalLabel">Username</h5> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Username:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Room:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
     
   </body>
 </html>
